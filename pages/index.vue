@@ -6,8 +6,8 @@
       </div>
     </div>
 
-<!-- css trkcs -->
-    <div class="row min-vh-100 d-flex align-items-center px-5">
+<!-- simple json cms  -->
+   <div class="row min-vh-100 d-flex align-items-center px-5">
       <div class="col-lg-12 p-3 m-3 border rounded">
         <h3>New posts</h3>
         <button @click="refreshPosts">Refresh</button>
@@ -15,9 +15,7 @@
       <div class="col-lg-4 p-0" v-for="(post, index) in simplePosts" :key="index">
         <div
           class="bg-light p-5 rounded-lg border m-3"
-          style="min-height: 250px"
-        >
-        
+          style="min-height: 250px">
           <h4>{{ post.title }}</h4>
           <p>{{ post.description }}</p>
           <router-link :to="`/blog/${post.slug}`">
@@ -93,9 +91,9 @@ export default {
   },
   computed: {
     // for vuex call
-    // posts() {
-    //   return this.$store.state.posts;
-    // },
+    posts() {
+      return this.$store.state.posts;
+    },
   },
 
   // using async fetch
@@ -185,15 +183,17 @@ export default {
     },
      
      refreshN2() {
-      this.n2();
+      // this.n2();
+      this.$store.dispatch("getPosts")
       console.log("n2 got called");
     },
+    
   },
   created() {
-    // this.$store.dispatch("getPosts");
-    this.n2();
-    // this.getPosts(); 
-    this.simpleCMS()
+    this.$store.dispatch("getPosts");
+    // this.n2();
+    // this.getPosts();
+    this.simpleCMS();
     // this.timer = setInterval(this.refreshN2, 5000); 
   },
 };
