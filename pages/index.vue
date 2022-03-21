@@ -26,6 +26,25 @@
     </div>
 
 <!-- n2 -->
+   <div class="row min-vh-100 d-flex align-items-center px-5">
+      <div class="col-lg-12 p-3 m-3 border rounded">
+        <h3>New posts</h3>
+        <button @click="refreshN2">Refresh</button>
+      </div>
+      <div class="col-lg-4 p-0" v-for="(post, index) in posts" :key="index">
+        <div
+          class="bg-light p-5 rounded-lg border m-3"
+          style="min-height: 250px">
+          <h4>{{ post.title.rendered }}</h4>
+          <p>{{ post.description }}</p>
+          <router-link :to="`/blog/${post.slug}`">
+            <div class="btn btn-outline-dark mt-3">Read more</div>
+          </router-link>
+        </div>
+      </div>
+    </div>
+
+<!-- n2 -->
     <div class="row min-vh-100 d-flex align-items-center p-5">
       <div class="col-lg-12 p-3 m-3 border rounded">
         <h3>New posts</h3>
@@ -83,7 +102,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      posts: [],
+      // posts: [],
       articles: [],
       simplePosts: [],
       error: []
