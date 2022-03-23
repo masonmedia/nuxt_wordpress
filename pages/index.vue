@@ -31,7 +31,7 @@
         <h3>New posts</h3>
         <button @click="refreshN2">Refresh</button>
       </div>
-      <div class="col-lg-4 p-0" v-for="(post, index) in posts" :key="index">
+      <div class="col-lg-4 p-0" v-for="post in posts" :key="post.id">
         <div
           class="bg-light p-5 rounded-lg border m-3"
           style="min-height: 250px">
@@ -45,12 +45,11 @@
     </div>
 
 <!-- n2 -->
-    <div class="row min-vh-100 d-flex align-items-center p-5">
+    <!-- <div class="row min-vh-100 d-flex align-items-center p-5">
       <div class="col-lg-12 p-3 m-3 border rounded">
         <h3>New posts</h3>
         <button @click="refreshN2">Refresh</button>
       </div>
-      <!-- <div v-if="$fetchState.pending">Placeholder</div> -->
       <div
         class="col-lg-4 p-0"
         v-for="(article, index) in articles"
@@ -65,7 +64,7 @@
           </router-link>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div>
       <p v-if="$fetchState.pending">Fetching mountains...</p>
@@ -160,6 +159,7 @@ export default {
     // },
     
     async simpleCMS() {
+      // https://simplejsoncms.com/editor/5o75gfy0v5o
       try {
       let simplePosts = await fetch( 'https://simplejsoncms.com/api/5o75gfy0v5o'
       ).then(res => res.json())
@@ -202,8 +202,8 @@ export default {
     },
      
      refreshN2() {
-      // this.n2();
-      this.$store.dispatch("getPosts")
+      this.n2();
+      // this.$store.dispatch("getPosts")
       console.log("n2 got called");
     },
     
