@@ -202,8 +202,8 @@ export default {
     },
      
      refreshN2() {
-      this.n2();
-      // this.$store.dispatch("getPosts")
+      // this.n2();
+      this.$store.dispatch("getPosts")
       console.log("n2 got called");
     },
     
